@@ -4,9 +4,9 @@
   <div v-else>
     <h1>Who is this pokemon?</h1>
 
-    <PokemonPicture 
+    <PokemonPicture
       :pokemon-id="pokemon.id"
-      :show-pokemon="showPokemon"
+      :show-pokemon="showPokemon" 
     />
 
     <PokemonOptions
@@ -15,10 +15,7 @@
     />
 
     <template v-if="showAnswer">
-      <span 
-        class="fade-in answer" 
-        :class="correctAnswer ? 'correct' : 'wrong'"
-      >
+      <span class="fade-in answer" :class="correctAnswer ? 'correct' : 'wrong'">
         {{ answer }}
       </span>
       <button @click="newGame">New game</button>
@@ -53,18 +50,32 @@ export default {
       this.pokemon = this.pokemons[Math.floor(Math.random() * 4)];
     },
     checkAnswer(pokemonSelectedId) {
+      if (this.answer) return
       this.showPokemon = true
       this.answer = (this.pokemon.id === pokemonSelectedId)
         ? `Correct, ${this.pokemon.name}!`
         : `Oops, it was ${this.pokemon.name}!`
       this.correctAnswer = this.pokemon.id === pokemonSelectedId
       this.showAnswer = true
+      this.highlightPokemonOption(pokemonSelectedId)
     },
     newGame() {
       this.showPokemon = false
       this.showAnswer = false
       this.pokemon = null
+      this.answer = ''
       this.mixPokemons()
+    },
+    highlightPokemonOption(pokemonSelectedId) {
+      const { id: actualPokemonId } = this.pokemon
+      this.pokemons
+        .forEach(pokemon => {
+          if (pokemon.id === actualPokemonId) {
+            pokemon['answer'] = 'correct'
+          } else if (pokemon.id === pokemonSelectedId) {
+            pokemon['answer'] = pokemonSelectedId === actualPokemonId ? 'correct' : 'wrong'
+          }
+        })
     }
   },
   mounted() {
