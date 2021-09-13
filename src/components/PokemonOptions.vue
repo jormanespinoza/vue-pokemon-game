@@ -2,8 +2,9 @@
   <div class="options-container">
     <ul>
       <li
-        v-for="{ id, name } in pokemons"
+        v-for="{ id, name, answer = '' } in pokemons"
         :key="id"
+        :class="answer"
         @click="$emit('pokemonSelected', id)"
       >
         {{ name }}
@@ -46,5 +47,15 @@ li {
 
 li:hover {
   background-color: rgba(0, 0, 0, 0.05);
+}
+
+li.correct {
+  background-color: #2d649b;
+  color: #fff;
+}
+
+li.wrong {
+  background-color: #da4f4f;
+  color: #fff;
 }
 </style>
