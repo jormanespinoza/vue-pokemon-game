@@ -68,14 +68,13 @@ export default {
     },
     highlightPokemonOption(pokemonSelectedId) {
       const { id: actualPokemonId } = this.pokemon
-      this.pokemons
-        .forEach(pokemon => {
-          if (pokemon.id === actualPokemonId) {
-            pokemon['answer'] = 'correct'
-          } else if (pokemon.id === pokemonSelectedId) {
-            pokemon['answer'] = pokemonSelectedId === actualPokemonId ? 'correct' : 'wrong'
-          }
-        })
+      this.pokemons.forEach(pokemon => {
+        if (pokemon.id === actualPokemonId) {
+          pokemon['answer'] = 'correct'
+        } else if (pokemon.id === pokemonSelectedId) {
+          pokemon['answer'] = pokemonSelectedId === actualPokemonId ? 'correct' : 'wrong'
+        }
+      })
     }
   },
   mounted() {
