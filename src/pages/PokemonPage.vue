@@ -88,6 +88,7 @@ export default {
 }
 
 button {
+  cursor: pointer;
   margin-top: 15px;
 }
 </style>

@@ -11,9 +11,9 @@ const getPokemonNames = async (pokemons = []) => {
     const promises = pokemons.map(pokemonId => pokemonApi.get(`/${pokemonId}`))
     const responses = await Promise.all(promises)
 
-    return responses.map(response => ({
-        id: response.data.id,
-        name: capitalize(response.data.name)
+    return responses.map(({data}) => ({
+        id: data.id,
+        name: capitalize(data.name)
     }))
 }
 
