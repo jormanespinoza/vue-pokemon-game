@@ -1,13 +1,12 @@
 import { capitalize } from '@vue/shared'
 import pokemonApi from '../api/pokemonApi'
 
-const pokemonWithSvgAvailableLength = 650
-
-const getPokemons = () => {
+export const getPokemons = () => {
+    const pokemonWithSvgAvailableLength = 650
     return Array.from(Array(pokemonWithSvgAvailableLength)).map((_, index) => index + 1)
 }
 
-const getPokemonNames = async (pokemons = []) => {
+export const getPokemonNames = async (pokemons = []) => {
     const promises = pokemons.map(pokemonId => pokemonApi.get(`/${pokemonId}`))
     const responses = await Promise.all(promises)
 
