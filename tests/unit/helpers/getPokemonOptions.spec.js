@@ -1,25 +1,6 @@
 import getPokemonOptions, { getPokemons, getPokemonNames } from '@/helpers/getPokemonOptions'
 
 describe('getPokemonOptions helpers', () => {
-    const expectedPokemons = [
-        {
-            id: 1,
-            name: 'Bulbasaur'
-        },
-        {
-            id: 2,
-            name: 'Ivysaur'
-        },
-        {
-            id: 3,
-            name: 'Venusaur'
-        },
-        {
-            id: 4,
-            name: 'Charmander'
-        }
-    ]
-
     test('getPokemons should return an array with numbers', () => {
         const pokemons = getPokemons()
 
@@ -28,7 +9,26 @@ describe('getPokemonOptions helpers', () => {
     })
 
     test('getPokemonNames should return an array of four elements', async () => {
-        const actualPokemons = await getPokemonNames([1, 2, 3, 4]);
+        const expectedPokemons = [
+            {
+                id: 1,
+                name: 'Bulbasaur'
+            },
+            {
+                id: 2,
+                name: 'Ivysaur'
+            },
+            {
+                id: 3,
+                name: 'Venusaur'
+            },
+            {
+                id: 4,
+                name: 'Charmander'
+            }
+        ]
+
+        const actualPokemons = await getPokemonNames([1, 2, 3, 4])
 
         expect(actualPokemons.length).toBe(4)
         expect(expectedPokemons).toStrictEqual(actualPokemons)
