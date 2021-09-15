@@ -43,8 +43,6 @@ describe('PokemonPicture.vue', () => {
 
         const [, pokemonImage] = wrapper.findAll('img')
 
-        console.log(pokemonImage)
-
         expect(pokemonImage.exists()).toBeTruthy()
         expect(pokemonImage.classes('fade-in')).toBeTruthy()
         expect(pokemonImage.attributes('src'))
