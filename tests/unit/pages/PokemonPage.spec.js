@@ -1,11 +1,25 @@
-import { shallowMount } from '@vue/test-utils'
+import { shallowMount, mount } from '@vue/test-utils'
 import PokemonPage from '@/pages/PokemonPage'
 
 describe('PokemonPage.vue', () => {
 
-    test('should match snapshot', () => {
-        const wrapper = shallowMount(PokemonPage)
+    let wrapper
+    let spiedMixPokemons
 
+    beforeEach(() => {
+        spiedMixPokemons = jest.spyOn(PokemonPage.methods, 'mixPokemons')
+        wrapper = shallowMount(PokemonPage)
+    })
+
+    test('should match snapshot', () => {
         expect(wrapper.html()).toMatchSnapshot()
+    })
+
+    test('should call mixPokemons on mounting', () => {
+        expect(spiedMixPokemons).toHaveBeenCalled()
+    })
+
+    afterEach(() => {
+        jest.clearAllMocks()
     })
 })
