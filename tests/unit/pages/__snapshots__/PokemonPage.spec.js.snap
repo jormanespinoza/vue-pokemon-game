@@ -1,3 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PokemonPage.vue should match snapshot 1`] = `<span>Looking for a pokemon, please wait...</span>`;
+exports[`PokemonPage.vue shout match snapshot when loading pokemons 1`] = `
+<div>
+  <h1>Who is this pokemon?</h1>
+  <pokemon-picture-stub pokemonid="1" showpokemon="false"></pokemon-picture-stub>
+  <pokemon-options-stub pokemons="[object Object],[object Object],[object Object],[object Object]"></pokemon-options-stub>
+  <!--v-if-->
+</div>
+`;

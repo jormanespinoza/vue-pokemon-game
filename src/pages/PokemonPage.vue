@@ -6,7 +6,7 @@
 
     <PokemonPicture
       :pokemon-id="pokemon.id"
-      :show-pokemon="showPokemon" 
+      :show-pokemon="showPokemon"
     />
 
     <PokemonOptions
@@ -50,6 +50,7 @@ export default {
       this.pokemon = this.pokemons[Math.floor(Math.random() * 4)];
     },
     checkAnswer(pokemonSelectedId) {
+      this.answer = ''
       if (this.answer) return
       this.showPokemon = true
       this.answer = (this.pokemon.id === pokemonSelectedId)
